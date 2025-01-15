@@ -4,7 +4,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import Loader from './common/Loader';
+import Loader from './custom/index';
 import routes from './AllRoutes';
 
 function App() {
