@@ -6,8 +6,11 @@ import ChartTwo from '../../components/Charts/ChartTwo';
 import ChatCard from '../../components/Chat/ChatCard';
 import MapOne from '../../components/Maps/MapOne';
 import TableOne from '../../components/Tables/TableOne';
+import FolderDropdown from '../../custom/FolderDropdown';
 
 const ECommerce: React.FC = () => {
+  const folders = [{folderName:"F1"},{folderName:"F2"},{folderName:"F3"},{folderName:"F4"},{folderName:"F5"}]
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
@@ -96,7 +99,7 @@ const ECommerce: React.FC = () => {
           </svg>
         </CardDataStats>
       </div>
-
+      <FolderDropdown folders={folders} loading={false} />
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <ChartOne />
         <ChartTwo />
