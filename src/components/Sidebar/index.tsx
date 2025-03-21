@@ -63,9 +63,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
-      <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
+      <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-4">
         <NavLink to="/">
-          <img src={Logo} alt="Logo" />
+          <img src={"https://www.antworksmoney.com/assets/img/logo3.png"} alt="Antworks Money Logo" />
         </NavLink>
 
         <button
