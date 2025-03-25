@@ -16,6 +16,7 @@ const SidebarLinkGroup = ({
   };
 
   return <li>{children(handleClick, open)}</li>;
+  
 };
 
 export default SidebarLinkGroup;
