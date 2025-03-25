@@ -15,6 +15,8 @@ function App() {
   //   window.scrollTo(0, 0);
   // }, [pathname]);
 
+  console.log("saurabh singh")
+
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
