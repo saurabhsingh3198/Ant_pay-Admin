@@ -50,11 +50,11 @@ const routes = [
         element: <FormElements />,
       },
       {
-        path: '/service-master/form-elements',
+        path: '/transection/form-elements',
         element: <FormElements />,
       },
       {
-        path: '/service-master/form-layout',
+        path: '/transection/form-layout',
         element: <FormLayout />,
       },
       {
