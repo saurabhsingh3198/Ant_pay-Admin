@@ -2,7 +2,6 @@ import { Calendar } from 'antd';
 import DefaultLayout from './layout/DefaultLayout';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
-import Profile from './pages/Profile';
 import FormElements from './pages/Form/FormElements';
 import FormLayout from './pages/Form/FormLayout';
 import Tables from './pages/Tables';
@@ -46,25 +45,28 @@ const routes = [
         path: '/calendar',
         element: <Calendar />,
       },
-
-      {
-        path: '/profile',
-        element: <Profile />,
-      },
       {
         path: '/forms/form-elements',
         element: <FormElements />,
+      },
+      {
+        path: '/service-master/form-elements',
+        element: <FormElements />,
+      },
+      {
+        path: '/service-master/form-layout',
+        element: <FormLayout />,
       },
       {
         path: '/forms/form-layout',
         element: <FormLayout />,
       },
       {
-        path: '/tables',
+        path: '/service-master/sub-category',
         element: <Tables />,
       },
       {
-        path: '/settings',
+        path: '/profile',
         element: <Settings />,
       },
       {
