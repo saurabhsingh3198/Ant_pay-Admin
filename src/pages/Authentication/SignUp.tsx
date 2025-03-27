@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoDark from '../../images/logo/logo-dark.svg';
 import Logo from '../../images/logo/logo.svg';
+import SelectGroupTwo from '../../components/Forms/SelectGroup/SelectGroupTwo';
 
 const SignUp: React.FC = () => {
   return (
@@ -13,8 +14,16 @@ const SignUp: React.FC = () => {
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
               <Link className="mb-5.5 inline-block" to="/">
-                <img className="hidden dark:block" src={"https://www.antworksmoney.com/assets/img/logo3.png"} alt="Antworks Money Logo" />
-                <img className="dark:hidden" src={"https://www.antworksmoney.com/assets/img/logo3.png"} alt="Antworks Money Logo" />
+                <img
+                  className="hidden dark:block"
+                  src={'https://www.antworksmoney.com/assets/img/logo3.png'}
+                  alt="Antworks Money Logo"
+                />
+                <img
+                  className="dark:hidden"
+                  src={'https://www.antworksmoney.com/assets/img/logo3.png'}
+                  alt="Antworks Money Logo"
+                />
               </Link>
               {/* <p className="2xl:px-20">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
@@ -218,6 +227,9 @@ const SignUp: React.FC = () => {
                       </svg>
                     </span>
                   </div>
+                </div>
+                <div>
+                  <SelectGroupTwo />
                 </div>
 
                 <div className="mb-4">
