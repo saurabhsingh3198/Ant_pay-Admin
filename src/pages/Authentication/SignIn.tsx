@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import OtpVerification from './OtpVerification';
 
 const SignIn: React.FC = () => {
   const [signinType, setSigninType] = useState<number>(1);
+  const [popupForOtp, setPopupForOtp] = useState<boolean>(false);
   const [fieldData, setFieldData] = useState({ email: '', password: '' });
   const navigate = useNavigate();
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault(); // Prevent form refresh
+    setPopupForOtp(true);
 
     // Check credentials
     const validEmail = 'saurabhsingh3198@gmail.com';
@@ -382,6 +385,22 @@ const SignIn: React.FC = () => {
             </div>
           </div>
         </div>
+        {popupForOtp && (
+          <OtpVerification
+            initialTimer={60}
+            onSuccess={(userData) => {
+              console.log('OTP Verified Successfully!', userData);
+              // Redirect or store user data here
+            }}
+            onFailure={() => {
+              console.log('OTP Verification Failed!');
+              // Handle failure case (e.g., show error message)
+            }}
+            closeModal={() =>
+              setPopupForOtp(false)
+            }
+          />
+        )}
       </div>
     </>
   );
