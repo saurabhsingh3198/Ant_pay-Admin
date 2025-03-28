@@ -191,7 +191,7 @@ const SignIn: React.FC = () => {
                 <Link
                   to="#"
                   onClick={() => setSigninType(1)}
-                  className={`w-full md:w-auto inline-flex items-center justify-center gap-2.5 py-3 px-6 md:py-4 md:px-10 text-center font-medium hover:bg-opacity-90 ${
+                  className={`w-full md:w-auto inline-flex items-center justify-center gap-2.5 py-3 px-6 md:py-4 md:px-8 text-center font-medium hover:bg-opacity-90 ${
                     signinType === 1
                       ? 'bg-primary text-white'
                       : 'border border-primary text-primary'
@@ -218,7 +218,7 @@ const SignIn: React.FC = () => {
                 <Link
                   to="#"
                   onClick={() => setSigninType(2)}
-                  className={`w-full md:w-auto inline-flex items-center justify-center gap-2.5 py-3 px-6 md:py-4 md:px-10 text-center font-medium hover:bg-opacity-90 ${
+                  className={`w-full md:w-auto inline-flex items-center justify-center gap-2.5 py-3 px-6 md:py-4 md:px-8 text-center font-medium hover:bg-opacity-90 ${
                     signinType === 2
                       ? 'bg-primary text-white'
                       : 'border border-primary text-primary'
@@ -396,9 +396,7 @@ const SignIn: React.FC = () => {
               console.log('OTP Verification Failed!');
               // Handle failure case (e.g., show error message)
             }}
-            closeModal={() =>
-              setPopupForOtp(false)
-            }
+            closeModal={() => setPopupForOtp(false)}
           />
         )}
       </div>
