@@ -6,7 +6,11 @@ import OtpVerification from './OtpVerification';
 const SignIn: React.FC = () => {
   const [signinType, setSigninType] = useState<number>(1);
   const [popupForOtp, setPopupForOtp] = useState<boolean>(false);
-  const [fieldData, setFieldData] = useState({ email: '', password: '' });
+  const [fieldData, setFieldData] = useState({
+    email: '',
+    password: '',
+    mobileNumber: '',
+  });
   const navigate = useNavigate();
 
   const handleSignIn = (e: React.FormEvent) => {
@@ -258,12 +262,12 @@ const SignIn: React.FC = () => {
                         <input
                           type="number"
                           placeholder="Enter your Mobile Number"
-                          value={fieldData.email}
+                          value={fieldData.mobileNumber}
                           className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                           onChange={(e) =>
                             setFieldData((prev: any) => ({
                               ...prev,
-                              email: e.target.value,
+                              mobileNumber: e.target.value,
                             }))
                           }
                         />
