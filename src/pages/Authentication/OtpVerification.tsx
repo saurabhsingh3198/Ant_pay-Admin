@@ -95,7 +95,7 @@ const OtpVerification: React.FC<OtpVerificationProps> = ({
               className="absolute top-2 right-2 hover:text-gray-800 p-2 rounded-full"
               onClick={closeModal} // Close modal when clicking the close button
             >
-              <IoIosCloseCircle size={24} /> {/* icon */}
+              <IoIosCloseCircle size={24} color="red"/> {/* icon */}
             </button>
 
             <div className="flex flex-col items-center gap-2">
