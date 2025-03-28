@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import siteConfig from '../../util/siteConfig';
-import { IoIosCloseCircle } from "react-icons/io";
+import { IoIosCloseCircle } from 'react-icons/io';
 
 interface OtpVerificationProps {
   initialTimer?: number;
+  loginType?: number;
   onSuccess?: (userName: string) => void;
   onFailure?: () => void;
   closeModal?: () => void;
@@ -12,6 +13,7 @@ interface OtpVerificationProps {
 
 const OtpVerification: React.FC<OtpVerificationProps> = ({
   initialTimer = 30,
+  loginType,
   onSuccess,
   onFailure,
   closeModal,
@@ -82,67 +84,63 @@ const OtpVerification: React.FC<OtpVerificationProps> = ({
   return (
     <>
       {/* Modal with background blur */}
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+        onClick={closeModal} // Close modal when clicking outside the modal
+      >
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
-          onClick={closeModal} // Close modal when clicking outside the modal
+          className="bg-white rounded-lg shadow-lg max-w-sm w-full p-6 relative"
+          onClick={(e) => e.stopPropagation()} // Prevent closing the modal when clicking inside it
         >
-          <div
-            className="bg-white rounded-lg shadow-lg max-w-sm w-full p-6 relative"
-            onClick={(e) => e.stopPropagation()} // Prevent closing the modal when clicking inside it
-          >
-            {/* Close Button with Icon */}
-            <button
-              className="absolute top-2 right-2 hover:text-gray-800 p-2 rounded-full"
-              onClick={closeModal} // Close modal when clicking the close button
-            >
-              <IoIosCloseCircle size={24} color="red"/> {/* icon */}
-            </button>
+          {/* Close Button with Icon */}
+            <IoIosCloseCircle className="absolute top-2 cursor-pointer right-2 hover:text-gray-800 p-2 rounded-full" size={40} color="red" onClick={closeModal} /> {/* icon */}
 
-            <div className="flex flex-col items-center gap-2">
-              <p className="text-center text-sm font-semibold text-black">
-                We have sent an OTP verification code to your mobile number: +91
-                {/* {verificationData.phone || verificationData.mobile} */}
-              </p>
-              <p className="text-md font-bold text-gray-700">Verify OTP</p>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className="flex justify-center items-center mb-1">
-                  {inputRefs.map((ref, index) => (
-                    <input
-                      key={index}
-                      ref={ref}
-                      type="text"
-                      maxLength={1}
-                      className="w-10 h-10 text-center font-bold bg-beige focus:outline-none focus:ring-2 focus:ring-blue-400 mx-1 border-2 border-gray-300 rounded-md"
-                      onChange={(e) => handleInputChange(index, e.target.value)}
-                      onKeyDown={(e) => handleKeyDown(index, e)}
-                    />
-                  ))}
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-center text-sm font-semibold text-black">
+              We have sent an OTP verification code to your{' '}
+              {loginType === 1 ? 'Mobile Number' : 'Email'}
+              {/* {verificationData.phone || verificationData.mobile} */}
+            </p>
+            <p className="text-md font-bold text-gray-700">Verify OTP</p>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <div className="flex justify-center items-center mb-1">
+                {inputRefs.map((ref, index) => (
+                  <input
+                    key={index}
+                    ref={ref}
+                    type="text"
+                    maxLength={1}
+                    className="w-10 h-10 text-center font-bold bg-beige focus:outline-none focus:ring-2 focus:ring-blue-400 mx-1 border-2 border-gray-300 rounded-md"
+                    onChange={(e) => handleInputChange(index, e.target.value)}
+                    onKeyDown={(e) => handleKeyDown(index, e)}
+                  />
+                ))}
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-blue-500 text-white rounded-md py-2 px-4 font-bold mt-4"
+                onClick={verifyOtp}
+              >
+                Verify
+              </button>
+              {!isOtpValid && (
+                <div className="text-red-500 text-sm">
+                  Invalid OTP. Please try again.
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-blue-500 text-white rounded-md py-2 px-4 font-bold mt-4"
-                  onClick={verifyOtp}
-                >
-                  Verify
-                </button>
-                {!isOtpValid && (
-                  <div className="text-red-500 text-sm">
-                    Invalid OTP. Please try again.
-                  </div>
+              )}
+              <p className="mt-2">
+                {timer === 0 ? (
+                  <button className="text-blue-500" onClick={getOtp}>
+                    Re-send OTP
+                  </button>
+                ) : (
+                  <>Resend your OTP in {timer} sec.</>
                 )}
-                <p className="mt-2">
-                  {timer === 0 ? (
-                    <button className="text-blue-500" onClick={getOtp}>
-                      Re-send OTP
-                    </button>
-                  ) : (
-                    <>Resend your OTP in {timer} sec.</>
-                  )}
-                </p>
-              </form>
-            </div>
+              </p>
+            </form>
           </div>
         </div>
+      </div>
     </>
   );
 };

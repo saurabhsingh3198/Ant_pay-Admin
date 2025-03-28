@@ -488,6 +488,7 @@ const SignIn: React.FC = () => {
         {popupForOtp && (
           <OtpVerification
             initialTimer={60}
+            loginType={signinType}
             onSuccess={(userData) => {
               console.log('OTP Verified Successfully!', userData);
               // Redirect or store user data here
