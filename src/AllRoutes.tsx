@@ -39,7 +39,7 @@ const routes = [
     children: [
       {
         index: true,
-        element: <Buttons />,
+        element: <ECommerce />,
       },
       {
         path: '/calendar',
