@@ -19,7 +19,7 @@ const SignIn: React.FC = () => {
 
     // Check credentials
     const validEmail = 'saurabhsingh3198@gmail.com';
-    const validPassword = 'S@ur@bh3198';
+    const validPassword = '12345678';
 
     if (
       fieldData.email === validEmail &&
