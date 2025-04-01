@@ -11,6 +11,7 @@ import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import ECommerce from './pages/Dashboard/ECommerce';
 import { Navigate } from 'react-router-dom';
+import Account_Settings from './pages/Account_Settings';
 
 const isAuthenticated = (): boolean => {
   return !!localStorage.getItem('email');
@@ -80,6 +81,10 @@ const routes = [
       {
         path: '/ui/buttons',
         element: <Buttons />,
+      },
+      {
+        path: '/settings',
+        element: <Account_Settings />,
       },
     ],
   },
