@@ -31,39 +31,42 @@ const SignIn: React.FC = () => {
   //   }
   // };
 
-  const handleSendOtp = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent form refresh
-
+  const handleSendOtp = async () => {
     const dataToPost = {
       phone: fieldData.mobileNumber,
     };
 
-    const responseData = await axios.post(
-      `${siteCofig.USER_PHONE_SEND_OTP}`,
-      dataToPost,
-    );
-    console.log('Response: ', responseData);
+    try {
+      const responseData = await axios.post(
+        `${siteCofig.USER_PHONE_SEND_OTP}`,
+        dataToPost,
+      );
+      console.log('Response: ', responseData);
+      setPopupForOtp(true);
+    } catch (error) {
+      console.log('Error:', error);
+    }
   };
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault(); // Prevent form refresh
-    setPopupForOtp(true);
+    handleSendOtp();
 
     // Check credentials
-    const validEmail = 'saurabhsingh3198@gmail.com';
-    const validPassword = '12345678';
+    // const validEmail = 'saurabhsingh3198@gmail.com';
+    // const validPassword = '12345678';
 
-    if (
-      fieldData.email === validEmail &&
-      fieldData.password === validPassword
-    ) {
-      // Navigate to home page
-      localStorage.setItem('email', validEmail);
-      toast.success('You have logged in successfully!');
-      navigate('/');
-    } else {
-      toast.error('Invalid email or password!');
-    }
+    // if (
+    //   fieldData.email === validEmail &&
+    //   fieldData.password === validPassword
+    // ) {
+    //   // Navigate to home page
+    //   localStorage.setItem('email', validEmail);
+    //   toast.success('You have logged in successfully!');
+    //   navigate('/');
+    // } else {
+    //   toast.error('Invalid email or password!');
+    // }
   };
 
   return (
@@ -521,6 +524,7 @@ const SignIn: React.FC = () => {
           <OtpVerification
             initialTimer={60}
             loginType={signinType}
+            verificationData={fieldData}
             onSuccess={(userData) => {
               console.log('OTP Verified Successfully!', userData);
               // Redirect or store user data here
