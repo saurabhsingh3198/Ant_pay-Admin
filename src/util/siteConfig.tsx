@@ -1,6 +1,6 @@
 const siteCofig = {
     BASE_URL: "",
-    USER_LOGIN: "https://affiliate.antworksmoney.in/api/auth/user/send-otp",
+    USER_PHONE_SEND_OTP: "https://affiliate.antworksmoney.in/api/auth/user/send-otp",
     USER_VERIFY: "https://affiliate.antworksmoney.in/api/auth/user/verify-otp",
 };
 

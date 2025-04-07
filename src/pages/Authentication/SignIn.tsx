@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import OtpVerification from './OtpVerification';
+import { useDispatch, useSelector } from 'react-redux';
+// import { sendOtp } from '../../store/slices/sendOtpSlice';
+import axios from 'axios';
+import siteCofig from '../../util/siteConfig';
 
 const SignIn: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [signinType, setSigninType] = useState<number>(1);
   const [popupForOtp, setPopupForOtp] = useState<boolean>(false);
   const [fieldData, setFieldData] = useState({
@@ -11,7 +18,32 @@ const SignIn: React.FC = () => {
     password: '',
     mobileNumber: '',
   });
-  const navigate = useNavigate();
+
+  const { loading } = useSelector((state: any) => state);
+
+  console.log('first', loading);
+
+  // const handleSendOtp = () => {
+  //   if (fieldData?.mobileNumber?.length === 10) {
+  //     dispatch(sendOtp(fieldData?.mobileNumber));
+  //   } else {
+  //     alert('Please enter a valid 10-digit phone number');
+  //   }
+  // };
+
+  const handleSendOtp = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent form refresh
+
+    const dataToPost = {
+      phone: fieldData.mobileNumber,
+    };
+
+    const responseData = await axios.post(
+      `${siteCofig.USER_PHONE_SEND_OTP}`,
+      dataToPost,
+    );
+    console.log('Response: ', responseData);
+  };
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault(); // Prevent form refresh
