@@ -52,7 +52,7 @@ const CreditCards = () => {
             onClick={() => {
               const slider = document.getElementById('slider') as HTMLElement;
               if (slider) {
-                slider.scrollBy({ left: 200, behavior: 'smooth' });
+                slider.scrollBy({ left: -200, behavior: 'smooth' });
               }
             }}
           >
