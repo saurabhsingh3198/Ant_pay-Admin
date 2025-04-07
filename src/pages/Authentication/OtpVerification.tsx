@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import siteConfig from '../../util/siteConfig';
 import { IoIosCloseCircle } from 'react-icons/io';
 import axios from 'axios';
-import siteCofig from '../../util/siteConfig';
 
 interface OtpVerificationProps {
   initialTimer?: number;
@@ -83,26 +82,27 @@ const OtpVerification: React.FC<OtpVerificationProps> = ({
 
     try {
       const responseData = await axios.post(
-        `${siteCofig.USER_VERIFY}`,
+        `${siteConfig.USER_VERIFY}`,
         dataToPost,
       );
-      if (
-        responseData.data.message ===
-        'OTP verified Successfully, Please complete your registration'
-      ) {
-        navigate('/auth/signup');
-      } else if (
-        responseData.data.message ===
-        'OTP verified Successfully, welcome to your Dashboard'
-      ) {
-        localStorage.setItem(
-          'mobileNumber',
-          String(verificationData.mobileNumber),
-        );
-        navigate('/');
-        closeModal();
-      } else {
-        // Optional: handle other cases or show error
+      if (responseData.data.message === 'OTP verified Successfully') {
+        if (
+          responseData.data.registration_key === siteConfig.USER_NOT_REGISTERED
+        ) {
+          navigate('/auth/signup');
+        } else if (
+          responseData.data.registration_key ===
+          siteConfig.USER_ALREADY_REGISTERED
+        ) {
+          localStorage.setItem(
+            'mobileNumber',
+            String(verificationData.mobileNumber),
+          );
+          navigate('/');
+          closeModal();
+        } else {
+          // Optional: handle other cases or show error
+        }
       }
     } catch (error) {
       console.log('Error:', error);

@@ -5,7 +5,7 @@ import OtpVerification from './OtpVerification';
 import { useDispatch, useSelector } from 'react-redux';
 // import { sendOtp } from '../../store/slices/sendOtpSlice';
 import axios from 'axios';
-import siteCofig from '../../util/siteConfig';
+import siteConfig from '../../util/siteConfig';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
 
     try {
       const responseData = await axios.post(
-        `${siteCofig.USER_PHONE_SEND_OTP}`,
+        `${siteConfig.USER_PHONE_SEND_OTP}`,
         dataToPost,
       );
       console.log('Response: ', responseData);
