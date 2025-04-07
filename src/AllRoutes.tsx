@@ -15,6 +15,7 @@ import Loans from './pages/Services/Loans';
 import CreditCards from './pages/Services/CreditCards';
 import Insurance from './pages/Services/Insurance';
 import TransactionHistory from './pages/Transactions/TransactionHistory';
+import EarningHistory from './pages/Transactions/earningHistory';
 
 const isAuthenticated = (): boolean => {
   return !!localStorage.getItem('email');
@@ -100,6 +101,10 @@ const routes = [
       {
         path: '/transaction/transaction-history',
         element: <TransactionHistory />,
+      },
+      {
+        path: '/transaction/earning-history',
+        element: <EarningHistory />,
       },
     ],
   },
