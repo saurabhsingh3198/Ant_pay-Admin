@@ -11,7 +11,10 @@ import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import ECommerce from './pages/Dashboard/ECommerce';
 import { Navigate } from 'react-router-dom';
-import Account_Settings from './pages/Account_Settings';
+import Loans from './pages/Services/Loans';
+import CreditCards from './pages/Services/CreditCards';
+import Insurance from './pages/Services/Insurance';
+import TransactionHistory from './pages/Transactions/TransactionHistory';
 
 const isAuthenticated = (): boolean => {
   return !!localStorage.getItem('email');
@@ -83,8 +86,20 @@ const routes = [
         element: <Buttons />,
       },
       {
-        path: '/settings',
-        element: <Account_Settings />,
+        path: '/services/loans',
+        element: <Loans />,
+      },
+      {
+        path: '/services/credit-cards',
+        element: <CreditCards />,
+      },
+      {
+        path: '/services/insurance',
+        element: <Insurance />,
+      },
+      {
+        path: '/transaction/transaction-history',
+        element: <TransactionHistory />,
       },
     ],
   },
