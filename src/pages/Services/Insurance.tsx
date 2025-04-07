@@ -44,11 +44,12 @@ const Insurance = () => {
            <button
              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white text-gray-900 p-2 rounded-full shadow-md hover:bg-gray-200 transition-all sm:hidden"
              style={{left: "-20px"}}
-             onClick={() =>
-               document
-                 .getElementById('slider')
-                 .scrollBy({ left: -200, behavior: 'smooth' })
-             }
+             onClick={() => {
+              const slider = document.getElementById('slider') as HTMLElement;
+              if (slider) {
+                slider.scrollBy({ left: 200, behavior: 'smooth' });
+              }
+            }}
            >
              <svg
                xmlns="http://www.w3.org/2000/svg"
@@ -104,11 +105,12 @@ const Insurance = () => {
            <button
              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white text-gray-900 p-2 rounded-full shadow-md hover:bg-gray-200 transition-all sm:hidden"
              style={{right: "-20px"}}
-             onClick={() =>
-               document
-                 .getElementById('slider')
-                 .scrollBy({ left: 200, behavior: 'smooth' })
-             }
+             onClick={() => {
+              const slider = document.getElementById('slider') as HTMLElement;
+              if (slider) {
+                slider.scrollBy({ left: 200, behavior: 'smooth' });
+              }
+            }}
            >
              <svg
                xmlns="http://www.w3.org/2000/svg"
