@@ -15,6 +15,7 @@ import Loans from './pages/Services/Loans';
 import CreditCards from './pages/Services/CreditCards';
 import Insurance from './pages/Services/Insurance';
 import TransactionHistory from './pages/Transactions/TransactionHistory';
+import SignUp1 from './pages/Authentication/SignUp1';
 
 const isAuthenticated = (): boolean => {
   return !!localStorage.getItem('mobileNumber');
@@ -27,7 +28,7 @@ const routes = [
   },
   {
     path: '/auth/signup',
-    element: <SignUp />,
+    element: <SignUp1 />,
   },
   {
     path: '*',
