@@ -4,7 +4,7 @@ const Account_Settings = () => {
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
-        <h3 className="font-medium text-black dark:text-white">Change Password</h3>
+        <h3 className="font-medium text-black dark:text-white">Change Password</h3> 
       </div>
       <form action="#">
         <div className="p-6.5">

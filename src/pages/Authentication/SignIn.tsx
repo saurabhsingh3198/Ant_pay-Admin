@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import OtpVerification from './OtpVerification';
+import { useDispatch, useSelector } from 'react-redux';
+// import { sendOtp } from '../../store/slices/sendOtpSlice';
+import axios from 'axios';
+import siteConfig from '../../util/siteConfig';
 
 const SignIn: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [signinType, setSigninType] = useState<number>(1);
   const [popupForOtp, setPopupForOtp] = useState<boolean>(false);
   const [fieldData, setFieldData] = useState({
@@ -11,26 +18,56 @@ const SignIn: React.FC = () => {
     password: '',
     mobileNumber: '',
   });
-  const navigate = useNavigate();
+
+  const { loading } = useSelector((state: any) => state);
+
+  console.log('first', loading);
+
+  // const handleSendOtp = () => {
+  //   if (fieldData?.mobileNumber?.length === 10) {
+  //     dispatch(sendOtp(fieldData?.mobileNumber));
+  //   } else {
+  //     alert('Please enter a valid 10-digit phone number');
+  //   }
+  // };
+
+  const handleSendOtp = async () => {
+    const dataToPost = {
+      phone: fieldData.mobileNumber,
+    };
+
+    try {
+      const responseData = await axios.post(
+        `${siteConfig.USER_PHONE_SEND_OTP}`,
+        dataToPost,
+      );
+      console.log('Response: ', responseData);
+      setPopupForOtp(true);
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault(); // Prevent form refresh
-    setPopupForOtp(true);
-
-    // Check credentials
-    const validEmail = 'saurabhsingh3198@gmail.com';
-    const validPassword = '12345678';
-
-    if (
-      fieldData.email === validEmail &&
-      fieldData.password === validPassword
-    ) {
-      // Navigate to home page
-      localStorage.setItem('email', validEmail);
-      toast.success('You have logged in successfully!');
-      navigate('/');
+    if (signinType === 1) {
+      handleSendOtp();
     } else {
-      toast.error('Invalid email or password!');
+      // Check credentials
+      const validEmail = 'saurabhsingh3198@gmail.com';
+      const validPassword = '12345678';
+
+      if (
+        fieldData.email === validEmail &&
+        fieldData.password === validPassword
+      ) {
+        //   // Navigate to home page
+        localStorage.setItem('email', validEmail);
+        toast.success('You have logged in successfully!');
+        navigate('/');
+      } else {
+        toast.error('Invalid email or password!');
+      }
     }
   };
 
@@ -489,6 +526,7 @@ const SignIn: React.FC = () => {
           <OtpVerification
             initialTimer={60}
             loginType={signinType}
+            verificationData={fieldData}
             onSuccess={(userData) => {
               console.log('OTP Verified Successfully!', userData);
               // Redirect or store user data here

@@ -1,9 +1,11 @@
 export type Package = {
-  name: string;
-  lastName: string;
+  date: string;
+  customerName: string;
+  contact: string;
+  product: string;
+  subCategory: string;
   email: string;
-  phone: string;
-  price: number;
-  invoiceDate: string;
   status: string;
+  amount: string;
+  earning: string;
 };
