@@ -1,16 +1,12 @@
+const BASE_URL = "https://affiliate.antworksmoney.in";
+
 const siteConfig = {
-    BASE_URL: "https://affiliate.antworksmoney.in",
     USER_ALREADY_REGISTERED: "1",
     USER_NOT_REGISTERED: "2",
-    USER_PHONE_SEND_OTP: `/api/auth/user/send-otp`,
-    USER_VERIFY: `/api/auth/user/verify-otp`,
+    USER_PHONE_SEND_OTP: `${BASE_URL}/api/auth/user/send-otp`,
+    USER_VERIFY: `${BASE_URL}/api/auth/user/verify-otp`,
+    REGISTER: `${BASE_URL}/auth/user/register`,
 };
-
-// Admin 
-// Login - https://affiliate.antworksmoney.in/api/auth/admin/send-otp
-// Body - phone
-// Verify - https://affiliate.antworksmoney.in/api/auth/admin/verify-otp
-// Body - "phone" : "xxxxxxxxx", "otp"    : "xxxxxx"
 
 
 export default siteConfig;
