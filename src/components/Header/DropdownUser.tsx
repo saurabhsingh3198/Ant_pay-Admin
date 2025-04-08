@@ -9,7 +9,7 @@ const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleLogOut = ()=> {
-    localStorage.removeItem('email');
+    localStorage.removeItem('mobileNumber');
     navigate('/auth/signin');
   }
 
