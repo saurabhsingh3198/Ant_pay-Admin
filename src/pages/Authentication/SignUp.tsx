@@ -1,10 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SelectGroupTwo from '../../components/Forms/SelectGroup/SelectGroupTwo';
 import { FaAddressCard } from 'react-icons/fa';
 import { LiaFingerprintSolid } from 'react-icons/lia';
+import siteConfig from '../../util/siteConfig';
+import axios from 'axios';
 
 const SignUp: React.FC = () => {
+  const [fieldData, setFieldData] = useState({
+    phone: '',
+    full_name: '',
+    email: '',
+    user_type: '',
+    dob_or_incorporation: '',
+    pan_number: '',
+    address_line: '',
+    state: '',
+    city: '',
+    pincode: '',
+    gst_number: '',
+  });
+
+  const handleRegister = async () => {
+    const payload = {
+      phone: fieldData.phone,
+      full_name: fieldData.full_name,
+      email: fieldData.email,
+      user_type: fieldData.user_type,
+      dob_or_incorporation: fieldData.dob_or_incorporation,
+      pan_number: fieldData.pan_number,
+      address_line: fieldData.address_line,
+      state: fieldData.state,
+      city: fieldData.city,
+      pincode: fieldData.pincode,
+    };
+    try {
+      const responseData = await axios.post(`${siteConfig.REGISTER}`, payload);
+      console.log('Response: ', responseData);
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
+
   return (
     <>
       {/* <Breadcrumb pageName="Sign Up" /> */}
@@ -171,7 +208,14 @@ const SignUp: React.FC = () => {
                     <input
                       type="text"
                       placeholder="Enter your full name"
+                      value={fieldData.full_name}
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      onChange={(e) =>
+                        setFieldData((prev: any) => ({
+                          ...prev,
+                          full_name: e.target.value,
+                        }))
+                      }
                     />
 
                     <span className="absolute right-4 top-4">
@@ -196,7 +240,7 @@ const SignUp: React.FC = () => {
                       </svg>
                     </span>
                   </div>
-                </div> 
+                </div>
 
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
@@ -206,7 +250,14 @@ const SignUp: React.FC = () => {
                     <input
                       type="email"
                       placeholder="Enter your email"
+                      value={fieldData.email}
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      onChange={(e) =>
+                        setFieldData((prev: any) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }))
+                      }
                     />
 
                     <span className="absolute right-4 top-4">
@@ -240,7 +291,14 @@ const SignUp: React.FC = () => {
                     <input
                       type="text"
                       placeholder="Enter your Address"
+                      value={fieldData.address_line}
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      onChange={(e) =>
+                        setFieldData((prev: any) => ({
+                          ...prev,
+                          address_line: e.target.value,
+                        }))
+                      }
                     />
 
                     <span className="absolute right-4 top-4">
@@ -257,7 +315,14 @@ const SignUp: React.FC = () => {
                     <input
                       type="text"
                       placeholder="Enter your ID Number"
+                      value={fieldData.pan_number}
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      onChange={(e) =>
+                        setFieldData((prev: any) => ({
+                          ...prev,
+                          pan_number: e.target.value,
+                        }))
+                      }
                     />
 
                     <span className="absolute right-4 top-4">
@@ -274,8 +339,15 @@ const SignUp: React.FC = () => {
                     <input
                       type="text"
                       placeholder="Enter your GST Number"
+                      value={fieldData.gst_number}
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                    />
+                      onChange={(e) =>
+                        setFieldData((prev: any) => ({
+                          ...prev,
+                          gst_number: e.target.value,
+                        }))
+                      }
+                      />
 
                     <span className="absolute right-4 top-4">
                       <svg
