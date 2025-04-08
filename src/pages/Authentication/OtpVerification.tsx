@@ -2,24 +2,26 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import siteConfig from '../../util/siteConfig';
 import { IoIosCloseCircle } from 'react-icons/io';
+import axios from 'axios';
 
 interface OtpVerificationProps {
   initialTimer?: number;
   loginType?: number;
+  verificationData?: any;
   onSuccess?: (userName: string) => void;
   onFailure?: () => void;
-  closeModal?: () => void;
+  closeModal: () => void;
 }
 
 const OtpVerification: React.FC<OtpVerificationProps> = ({
   initialTimer = 30,
   loginType,
+  verificationData,
   onSuccess,
   onFailure,
   closeModal,
 }) => {
   const [timer, setTimer] = useState<number>(initialTimer);
-  const [verificationData, setVerificationData] = useState<any>({});
   const [updatedOtp, setUpdatedOtp] = useState<string>('');
   const [isOtpValid, setIsOtpValid] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true); // Modal visibility state
@@ -32,7 +34,7 @@ const OtpVerification: React.FC<OtpVerificationProps> = ({
 
   useEffect(() => {
     const { userData, mobileNumber } = location.state || {};
-    setVerificationData(userData);
+    // setVerificationData(userData);
     console.log(mobileNumber, 'Mobile number received');
   }, [location.state]);
 
@@ -63,13 +65,47 @@ const OtpVerification: React.FC<OtpVerificationProps> = ({
   };
 
   const verifyOtp = () => {
-    if (verificationData.otp === updatedOtp) {
-      localStorage.setItem('mobileNumber', String(verificationData.phone));
-      localStorage.setItem('userId', String(verificationData.id));
-      getUserData();
+    if (verificationData.mobileNumber) {
+      handleVerifyOtp();
+      // getUserData();
     } else {
       setIsOtpValid(false);
       setTimeout(() => setIsOtpValid(true), 10000);
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    const dataToPost = {
+      phone: verificationData.mobileNumber,
+      otp: updatedOtp,
+    };
+
+    try {
+      const responseData = await axios.post(
+        `${siteConfig.USER_VERIFY}`,
+        dataToPost,
+      );
+      if (responseData.data.message === 'OTP verified Successfully') {
+        if (
+          responseData.data.registration_key === siteConfig.USER_NOT_REGISTERED
+        ) {
+          navigate('/auth/signup');
+        } else if (
+          responseData.data.registration_key ===
+          siteConfig.USER_ALREADY_REGISTERED
+        ) {
+          localStorage.setItem(
+            'mobileNumber',
+            String(verificationData.mobileNumber),
+          );
+          navigate('/');
+          closeModal();
+        } else {
+          // Optional: handle other cases or show error
+        }
+      }
+    } catch (error) {
+      console.log('Error:', error);
     }
   };
 
@@ -93,13 +129,18 @@ const OtpVerification: React.FC<OtpVerificationProps> = ({
           onClick={(e) => e.stopPropagation()} // Prevent closing the modal when clicking inside it
         >
           {/* Close Button with Icon */}
-            <IoIosCloseCircle className="absolute top-2 cursor-pointer right-2 hover:text-gray-800 p-2 rounded-full" size={40} color="red" onClick={closeModal} /> {/* icon */}
-
+          <IoIosCloseCircle
+            className="absolute top-2 cursor-pointer right-2 hover:text-gray-800 p-2 rounded-full"
+            size={40}
+            color="red"
+            onClick={closeModal}
+          />{' '}
+          {/* icon */}
           <div className="flex flex-col items-center gap-2">
             <p className="text-center text-sm font-semibold text-black">
               We have sent an OTP verification code to your{' '}
-              {loginType === 1 ? 'Mobile Number' : 'Email'}
-              {/* {verificationData.phone || verificationData.mobile} */}
+              {loginType === 1 ? 'Mobile Number' : 'Email'} :-
+              {verificationData.mobileNumber || verificationData.email}
             </p>
             <p className="text-md font-bold text-gray-700">Verify OTP</p>
             <form onSubmit={(e) => e.preventDefault()}>
