@@ -18,7 +18,7 @@ import TransactionHistory from './pages/Transactions/TransactionHistory';
 import EarningHistory from './pages/Transactions/earningHistory';
 
 const isAuthenticated = (): boolean => {
-  return !!localStorage.getItem('email');
+  return !!localStorage.getItem('mobileNumber');
 };
 
 const routes = [
