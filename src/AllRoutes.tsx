@@ -16,6 +16,7 @@ import CreditCards from './pages/Services/CreditCards';
 import Insurance from './pages/Services/Insurance';
 import TransactionHistory from './pages/Transactions/TransactionHistory';
 import SignUp1 from './pages/Authentication/SignUp1';
+import EarningHistory from './pages/Transactions/EarningHistory';
 
 const isAuthenticated = (): boolean => {
   return !!localStorage.getItem('mobileNumber');
