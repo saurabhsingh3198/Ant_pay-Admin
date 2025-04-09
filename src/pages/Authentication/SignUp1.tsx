@@ -81,8 +81,8 @@ const SignUp1: React.FC = () => {
               </h2>
 
               <form>
-                <div className="flex space-x-6">
-                  <div className="mb-4 w-1/2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Name
                     </label>
@@ -124,7 +124,7 @@ const SignUp1: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="mb-4 w-1/2">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Email
                     </label>
@@ -162,8 +162,8 @@ const SignUp1: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex space-x-6">
-                  <div className="mb-4 w-1/2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Phone
                     </label>
@@ -200,7 +200,7 @@ const SignUp1: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="mb-4 w-1/2">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Gender
                     </label>
@@ -258,8 +258,8 @@ const SignUp1: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex space-x-6">
-                  <div className="mb-6 w-1/2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       DOB Or Incorporation
                     </label>
@@ -292,12 +292,12 @@ const SignUp1: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="mb-4 w-1/2">
+                  <div className="mb-1 sm:mb-4">
                     <SelectGroupTwo />
                   </div>
                 </div>
-                <div className="flex space-x-6">
-                  <div className="mb-6 w-1/2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       ID Number
                     </label>
@@ -321,7 +321,7 @@ const SignUp1: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="mb-6 w-1/2">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       GST Number
                     </label>
@@ -360,8 +360,8 @@ const SignUp1: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex space-x-6">
-                  <div className="mb-4 w-1/2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Aadhaar Card
                     </label>
@@ -384,7 +384,7 @@ const SignUp1: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="mb-4 w-1/2">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Attach Aadhaar
                     </label>
@@ -394,8 +394,8 @@ const SignUp1: React.FC = () => {
                     />
                   </div>
                 </div>
-                <div className="flex space-x-6">
-                  <div className="mb-4 w-1/2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Attach Pan
                     </label>
@@ -404,7 +404,7 @@ const SignUp1: React.FC = () => {
                       className="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
                     />
                   </div>
-                  <div className="mb-4 w-1/2">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Attach Profile Photo
                     </label>
@@ -414,8 +414,8 @@ const SignUp1: React.FC = () => {
                     />
                   </div>
                 </div>
-                <div className="flex space-x-6">
-                  <div className="mb-4 w-1/2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Address
                     </label>
@@ -438,7 +438,7 @@ const SignUp1: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="mb-4 w-1/2">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       State
                     </label>
@@ -500,8 +500,8 @@ const SignUp1: React.FC = () => {
                       </span>
                     </div>
                 </div>
-                <div className="flex space-x-6">
-                <div className="mb-4 w-1/2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       City
                     </label>
@@ -562,7 +562,7 @@ const SignUp1: React.FC = () => {
                         <FaAddressCard size={22} />
                       </span>
                     </div>
-                  <div className="mb-4 w-1/2">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Pin Code
                     </label>
