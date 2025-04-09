@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
 
     try {
       const responseData = await axios.post(
-        `${siteConfig.BASE_URL}${siteConfig.USER_PHONE_SEND_OTP}`,
+        `${siteConfig.USER_PHONE_SEND_OTP}`,
         dataToPost,
       );
       console.log('Response: ', responseData);
