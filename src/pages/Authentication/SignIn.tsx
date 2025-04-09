@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
 
     try {
       const responseData = await axios.post(
-        `${siteConfig.USER_PHONE_SEND_OTP}`,
+        `${siteConfig.BASE_URL}${siteConfig.USER_PHONE_SEND_OTP}`,
         dataToPost,
       );
       console.log('Response: ', responseData);
@@ -50,23 +50,25 @@ const SignIn: React.FC = () => {
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault(); // Prevent form refresh
-    handleSendOtp();
+    if (signinType === 1) {
+      handleSendOtp();
+    } else {
+      // Check credentials
+      const validEmail = 'saurabhsingh3198@gmail.com';
+      const validPassword = '12345678';
 
-    // Check credentials
-    // const validEmail = 'saurabhsingh3198@gmail.com';
-    // const validPassword = '12345678';
-
-    // if (
-    //   fieldData.email === validEmail &&
-    //   fieldData.password === validPassword
-    // ) {
-    //   // Navigate to home page
-    //   localStorage.setItem('email', validEmail);
-    //   toast.success('You have logged in successfully!');
-    //   navigate('/');
-    // } else {
-    //   toast.error('Invalid email or password!');
-    // }
+      if (
+        fieldData.email === validEmail &&
+        fieldData.password === validPassword
+      ) {
+        //   // Navigate to home page
+        localStorage.setItem('email', validEmail);
+        toast.success('You have logged in successfully!');
+        navigate('/');
+      } else {
+        toast.error('Invalid email or password!');
+      }
+    }
   };
 
   return (
