@@ -17,20 +17,18 @@ const SignUp1: React.FC = () => {
   };
 
   useEffect(() => {
-      // Init flatpickr
-      flatpickr('.form-datepicker', {
-        mode: 'single',
-        static: true,
-        monthSelectorType: 'static',
-        dateFormat: 'M j, Y',
-        prevArrow:
-          '<svg className="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
-        nextArrow:
-          '<svg className="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
-      });
-  
-      
-    }, []);
+    // Init flatpickr
+    flatpickr('.form-datepicker', {
+      mode: 'single',
+      static: true,
+      monthSelectorType: 'static',
+      dateFormat: 'M j, Y',
+      prevArrow:
+        '<svg className="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
+      nextArrow:
+        '<svg className="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
+    });
+  }, []);
 
   const [fieldData, setFieldData] = useState({
     phone: '',
@@ -490,14 +488,10 @@ const SignUp1: React.FC = () => {
                         </svg>
                       </span>
                     </div>
-
-                      <span className="absolute right-4 top-4">
-                        <FaAddressCard size={22} />
-                      </span>
-                    </div>
+                  </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="mb-1 sm:mb-4">
+                  <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       City
                     </label>
@@ -553,11 +547,7 @@ const SignUp1: React.FC = () => {
                         </svg>
                       </span>
                     </div>
-
-                      <span className="absolute right-4 top-4">
-                        <FaAddressCard size={22} />
-                      </span>
-                    </div>
+                  </div>
                   <div className="mb-1 sm:mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
                       Pin Code
