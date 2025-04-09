@@ -31,7 +31,7 @@ const DatePickerInput = ({ label, name, placeholder = "mm/dd/yyyy" }: any) => {
 
   return (
     <div className="mb-1 sm:mb-4">
-      <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+      <label className="mb-2.5 block text-sm font-medium text-black dark:text-white">
         {label}
       </label>
       <div className="relative">
@@ -39,14 +39,14 @@ const DatePickerInput = ({ label, name, placeholder = "mm/dd/yyyy" }: any) => {
           ref={inputRef}
           name={name}
           placeholder={placeholder}
-          className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary text-black dark:text-white"
+          className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-4 py-[11px] font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary text-black dark:text-white"
           data-class="flatpickr-right"
           readOnly
         />
         <div className="pointer-events-none absolute inset-0 left-auto right-5 flex items-center">
           <svg
-            width="18"
-            height="18"
+            width="16"
+            height="16"
             viewBox="0 0 18 18"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

@@ -5,6 +5,8 @@ import SelectInput from '../../custom/SelectInput';
 import DatePickerInput from '../../custom/DatePickerInput';
 import FileUploadInput from '../../custom/FileUploadInput';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import siteConfig from '../../util/siteConfig';
 
 const initialValues = {
   full_name: '',
@@ -67,6 +69,33 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function SignUp1() {
+  const handleRegister = async (val: any) => {
+    const payload = {
+      full_name: val.full_name,
+      phone: val.phone,
+      email: val.email,
+      gender: val.gender,
+      gst_number: val.gst_number,
+      aadhaar_number: val.aadhaar_number,
+      user_type: val.user_type,
+      dob_or_incorporation: val.dob,
+      pan_number: val.pan_number,
+      address_line: val.address,
+      state: val.state,
+      city: val.city,
+      pincode: val.pin_code,
+      profilePic: val.profilePic,
+      panCard: val.panCard,
+      aadhaarCard: val.aadhaarCard,
+    };
+    try {
+      const responseData = await axios.post(`${siteConfig.REGISTER}`, payload);
+      console.log('Response: ', responseData);
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
+
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="flex flex-wrap items-center">
@@ -80,11 +109,12 @@ export default function SignUp1() {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={(values) => {
+                handleRegister(values);
                 console.log('Submitted data:', values);
               }}
             >
               <Form>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                   <TextInput
                     label="Name"
                     name="full_name"
@@ -98,7 +128,7 @@ export default function SignUp1() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                   <TextInput
                     label="Phone"
                     name="phone"
@@ -111,16 +141,16 @@ export default function SignUp1() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                   <DatePickerInput name="dob" label="Date of Birth" />
                   <SelectInput
-                    label="Select User Type"
+                    label="User Type"
                     name="user_type"
                     options={['Buddy', 'Bizbuddy']}
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                   <TextInput
                     label="Pan Number"
                     name="pan_number"
@@ -133,7 +163,7 @@ export default function SignUp1() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                   <TextInput
                     label="Aadhaar Number"
                     name="aadhaar_number"
@@ -146,7 +176,7 @@ export default function SignUp1() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                   <SelectInput
                     label="State"
                     name="state"
@@ -160,7 +190,7 @@ export default function SignUp1() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                   <TextInput
                     label="Pin Code"
                     name="pin_code"
@@ -172,7 +202,7 @@ export default function SignUp1() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                   <FileUploadInput name="panCard" label="Upload Pan Card" />
                   <FileUploadInput
                     name="aadhaarCard"

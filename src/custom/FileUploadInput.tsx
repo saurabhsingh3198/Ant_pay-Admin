@@ -19,7 +19,7 @@ const FileUploadInput = ({ name, label }: { name: string; label: string }) => {
       </label>
       <div
         id="FileUpload"
-        className="relative block w-full cursor-pointer appearance-none rounded border border-dashed border-primary bg-gray py-4 px-4 dark:bg-meta-4 sm:py-7.5"
+        className="relative block w-full cursor-pointer appearance-none rounded border border-dashed border-primary bg-gray px-6 py-3 dark:bg-meta-4"
       >
         <input
           ref={inputRef}
